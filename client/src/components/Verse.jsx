@@ -11,7 +11,7 @@ const Verse = () => {
   const [showNextQuestion, setShowNextQuestion] = useState(false);
   const [currentAnswer, setCurrentAnswer] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const navigate = useNavigate();
+  const [correctAnswer, setCorrectAnswer] = useState({});
 
   useEffect(() => {
     const fetchVerse = async () => {
@@ -34,6 +34,12 @@ const Verse = () => {
   const handleAnswerSelection = (questionIndex, optionIndex) => {
     const updatedUserAnswers = [...userAnswers];
     updatedUserAnswers[questionIndex] = optionIndex;
+    const findCorrectAnswer = quizData[questionIndex].options.find((el) => {
+      if (el.value === 1) {
+        return true;
+      }
+    });
+    setCorrectAnswer(findCorrectAnswer);
     setUserAnswers(updatedUserAnswers);
     setShowNextQuestion(true);
     setCurrentAnswer(quizData[questionIndex].options[optionIndex].value);
@@ -43,7 +49,7 @@ const Verse = () => {
     if (currentAnswer <= 0) {
       Swal.fire({
         title: "Wrong Answer!",
-        text: "Do you want to continue",
+        text: `The correct answer is ${correctAnswer.text}`,
         icon: "error",
         confirmButtonText: "Cool",
       });

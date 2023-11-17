@@ -11,7 +11,7 @@ const Surah = () => {
   const [showNextQuestion, setShowNextQuestion] = useState(false);
   const [showScore, setShowScore] = useState(false);
   const [currentAnswer, setCurrentAnswer] = useState(0);
-  const navigate = useNavigate();
+  const [correctAnswer, setCorrectAnswer] = useState({});
 
   useEffect(() => {
     const fetchSurah = async () => {
@@ -37,18 +37,26 @@ const Surah = () => {
     // console.log(quizData[questionIndex].options[optionIndex]);
     const updatedUserAnswers = [...userAnswers];
     updatedUserAnswers[questionIndex] = optionIndex;
+    // console.log(quizData[questionIndex]);
+    const findCorrectAnswer = quizData[questionIndex].options.find((el) => {
+      // console.log(el);
+      if (el.value === 1) {
+        return true;
+      }
+    });
+    // console.log(findCorrectAnswer);
+    setCorrectAnswer(findCorrectAnswer);
     setUserAnswers(updatedUserAnswers);
     setShowNextQuestion(true);
     setCurrentAnswer(quizData[questionIndex].options[optionIndex].value);
   };
 
   const handleNextQuestion = () => {
-    console.log();
     // bikin if utk userAnswers kalau salah/ 0, munculin pop up wrong answer gitu, kalau bisa kasih tau yang bener\
     if (currentAnswer <= 0) {
       Swal.fire({
         title: "Wrong Answer!",
-        text: "Do you want to continue",
+        text: `The right answer is ${correctAnswer.text}`,
         icon: "error",
         confirmButtonText: "Cool",
       });
