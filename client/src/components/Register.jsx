@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   //   console.log("hehehe");
@@ -22,11 +20,16 @@ const Register = () => {
       });
       navigate("/home");
     } catch (error) {
-      console.log(error, 21);
+      // console.log(error, 21);
       Swal.fire({
+        target: "#cust-swal-container",
         title: `${error.response.data.message}`,
-        icon: "error",
-        confirmButtonText: "Ok",
+        width: "300px",
+        position: "top-end",
+        timer: 2000,
+        // confirmButtonText: "Ok",
+        showConfirmButton: false,
+        background: "linear-gradient(to right, #900C3F, #F94C10)",
       });
     }
   };
@@ -44,7 +47,7 @@ const Register = () => {
               Email
             </label>
             <input
-              type="email"
+              type="text"
               id="email"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Enter your email"
@@ -83,6 +86,7 @@ const Register = () => {
           </p>
         </form>
       </div>
+      <div id="cust-swal-container"></div>
     </div>
   );
 };

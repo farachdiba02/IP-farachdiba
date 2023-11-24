@@ -16,7 +16,7 @@ class Controller {
         msg: `User id ${user.id} successfully created`,
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       next(error);
     }
   }
@@ -73,7 +73,8 @@ class Controller {
       }
       getQuizData(78, 114, 5);
     } catch (error) {
-      console.log(error);
+      next(error);
+      // console.log(error);
     }
   }
 
@@ -95,7 +96,8 @@ class Controller {
       }
       getQuizData(46, 114, 5);
     } catch (error) {
-      console.log(error);
+      next(error);
+      // console.log(error);
     }
   }
 
@@ -109,7 +111,8 @@ class Controller {
         data,
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      next(error);
     }
   }
 
@@ -131,11 +134,12 @@ class Controller {
           }
         );
         res.status(200).json({
-          message: "sfdgfghjjk",
+          message: "Success update user points",
         });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      next(error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   }

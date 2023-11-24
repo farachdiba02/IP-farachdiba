@@ -41,7 +41,8 @@ class AuthController {
       res.status(200).json({ access_token });
       // console.log("email berhasil dikirim");
     } catch (error) {
-      console.log(error, 44);
+      next(error);
+      // console.log(error, 44);
     }
   }
 }

@@ -1,5 +1,5 @@
 function errorHandler(err, req, res, next) {
-  console.log(err, 2);
+  // console.log(err, 2);
   let status = 500;
   let message = "Internal Server Error";
 
@@ -21,6 +21,10 @@ function errorHandler(err, req, res, next) {
   }
   if (err.message === "Invalid Email/Password") {
     status = 400;
+    message = err.message;
+  }
+  if (err.name === "Unauthorized") {
+    status = 401;
     message = err.message;
   }
 

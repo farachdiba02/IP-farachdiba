@@ -89,11 +89,16 @@ const LandingPage = () => {
       localStorage.setItem("access_token", access_token);
       navigate("/home");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       Swal.fire({
+        target: "#cust-swal-container",
         title: `${error.response.data.message}`,
-        icon: "error",
-        confirmButtonText: "Ok",
+        width: "300px",
+        position: "top-end",
+        timer: 2000,
+        // confirmButtonText: "Ok",
+        showConfirmButton: false,
+        background: "linear-gradient(to right, #900C3F, #F94C10)",
       });
     }
   };
@@ -130,7 +135,7 @@ const LandingPage = () => {
                 Email
               </label>
               <input
-                type="email"
+                type="text"
                 id="email"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Enter your email"
@@ -177,6 +182,7 @@ const LandingPage = () => {
           </form>
         </div>
       </div>
+      <div id="cust-swal-container"></div>
     </div>
   );
 };

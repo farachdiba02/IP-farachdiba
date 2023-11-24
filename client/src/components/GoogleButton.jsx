@@ -13,6 +13,7 @@ const GoogleButton = () => {
       });
       //   console.log(data);
       const access_token = data.access_token;
+      // console.log(access_token);
       localStorage.setItem("access_token", access_token);
       //   console.log(access_token);
       navigate("/home");

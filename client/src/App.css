@@ -48,3 +48,16 @@
   font-weight: 700;
   /* color: var(--fallback-bc,oklch(var(--bc)/0.6)); */
 }
+
+.swal2-popup {
+  font-size: 10px !important;
+  /* color: black; */
+}
+
+#swal2-html-container {
+  font-size: 1.2rem;
+}
+
+#cust-swal-container .swal2-popup {
+  color: white;
+}
