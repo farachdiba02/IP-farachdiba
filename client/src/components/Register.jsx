@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   //   console.log("hehehe");
-  const BASE_URL = "http://localhost:3000";
+  const BASE_URL = "https://diba.moristar.my.id";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

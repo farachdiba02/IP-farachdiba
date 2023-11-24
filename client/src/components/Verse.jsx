@@ -5,7 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const Verse = () => {
-  const BASE_URL = "http://localhost:3000";
+  const BASE_URL = "https://diba.moristar.my.id";
   const [quizData, setQuizData] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);

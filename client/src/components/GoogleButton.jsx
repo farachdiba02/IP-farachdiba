@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const GoogleButton = () => {
   const navigate = useNavigate();
   async function handleGoogleLogin(codeResponse) {
-    const BASE_URL = "http://localhost:3000";
+    const BASE_URL = "https://diba.moristar.my.id";
     try {
       const { data } = await axios.post(`${BASE_URL}/google-login`, null, {
         headers: {

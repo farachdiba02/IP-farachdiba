@@ -72,7 +72,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const LandingPage = () => {
-  const BASE_URL = "http://localhost:3000";
+  const BASE_URL = "https://diba.moristar.my.id";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

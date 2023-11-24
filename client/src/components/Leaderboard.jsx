@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 
 const Leaderboard = () => {
-  const BASE_URL = "http://localhost:3000";
+  const BASE_URL = "https://diba.moristar.my.id";
   const [users, setUsers] = useState([]);
   const fetchUsers = async () => {
     try {
