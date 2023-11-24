@@ -1,7 +1,8 @@
 const { comparePassword } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
 const { User } = require("../models");
-const { guessSurah, guessVerse } = require("quran-quiz");
+const axios = require('axios')
+//const { guessSurah, guessVerse } = require("quran-quiz/dist");
 
 class Controller {
   static async register(req, res, next) {
@@ -62,11 +63,13 @@ class Controller {
           surahRange.push(i);
         }
         // console.log(surahRange, 63);
-        const data = await guessSurah.bySurah({
-          amount: amount,
-          select: surahRange,
-        });
+       // const data = await guessSurah.bySurah({
+         // amount: amount,
+          //select: surahRange,
+       // });
         // console.log(data);
+const {data} = await axios.get(`https://quran.zakiego.com/api/guessSurah?select=${surahRange.join(",")}&amount=${amount}
+`)
         res.status(200).json({
           data,
         });
@@ -85,11 +88,13 @@ class Controller {
         for (let i = startSurah; i <= endSurah; i++) {
           surahRange.push(i);
         }
-        const data = await guessVerse.bySurah({
-          amount: amount,
-          select: surahRange,
-        });
-        // console.log(data);
+       // const data = await guessVerse.bySurah({
+         // amount: amount,
+          //select: surahRange,
+       // });
+const {data} = await axios.get(`https://quran.zakiego.com/api/guessVerse?by=surah&select=${surahRange.join(",")}&amount=${amount}
+`)        
+// console.log(data);
         res.status(200).json({
           data,
         });
